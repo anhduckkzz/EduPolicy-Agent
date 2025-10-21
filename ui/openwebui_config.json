@@ -1,0 +1,5 @@
+{
+  "backend_url": "http://localhost:8000",
+  "title": "EduPolicy Agent",
+  "description": "Assistant for university regulations backed by FastAPI and Milvus"
+}
