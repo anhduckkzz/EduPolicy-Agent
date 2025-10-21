@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  backend:
+    build: .
+    container_name: edupolicy-backend
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+    depends_on:
+      - milvus
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  milvus:
+    image: milvusdb/milvus:v2.3.4
+    container_name: milvus-standalone
+    environment:
+      MILVUS_MODE: "standalone"
+      ETCD_USE_EMBED: "true"
+      MINIO_USE_EMBED: "true"
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    volumes:
+      - milvus_data:/var/lib/milvus
+
+  ui:
+    build: .
+    container_name: edupolicy-ui
+    env_file:
+      - .env
+    command: streamlit run ui/app_ui.py --server.port=8501 --server.address=0.0.0.0
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+
+volumes:
+  milvus_data:

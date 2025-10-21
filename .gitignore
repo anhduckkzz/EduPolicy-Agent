@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.local
+/.idea
+/.vscode
+.DS_Store
+/data/session_memory.json
+/data/embeddings/*.bin
+/data/embeddings/*.json
+/data/regulations.pdf
+/data/student_records.db
