@@ -1,10 +1,6 @@
 # EduPolicy Agent — Agentic AI Assistant for University Regulations
 
-EduPolicy Agent is a full-stack, agentic AI assistant designed to reason over
-university regulation documents, structured student records and trusted web
-sources.  It combines FastAPI, LangChain-based ReAct reasoning, Milvus vector
-search, SQLite analytics and a Streamlit chat UI to deliver concise answers
-supported by transparent reasoning traces.
+Due to difficulties in finding out and search for suitable regulations attachments when problem arise, I find this is a very complex due to the disorder and organize of how these documents are stored, therefore I create this agent, to help me search for relevent infomation with some simple prompt, no need to look hopelessly for hours just to find some very short answer.
 
 ## ✨ Features
 
