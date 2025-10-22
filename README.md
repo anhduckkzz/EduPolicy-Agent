@@ -60,7 +60,7 @@ edupolicy-agent/
    pip install -r requirements.txt
    ```
 
-2. **Configure environment** – copy `.env.example` (create if needed) and set:
+2. **Configure environment**
 
    ```bash
    export OPENROUTER_API_KEY="your-openrouter-key"
