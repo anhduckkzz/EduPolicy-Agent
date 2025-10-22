@@ -182,15 +182,3 @@ respond. Inspect the reasoning trace to verify tool usage.
   Milvus collection uses matching dimensionality.
 - Tavily integration is optional; without a key the tool returns a descriptive
   message, allowing the agent to avoid failing requests.
-
-## 📚 Extending the Project
-
-- Swap Streamlit for OpenWebUI by pointing the UI configuration to the backend
-  and mapping the API contract.
-- Add additional tools (e.g., calendar lookups, policy comparison) by extending
-  `app/agents/tools` and registering them in the controller.
-- Integrate authentication or rate limiting at the FastAPI layer for production.
-
----
-
-Crafted with ❤️ to simplify navigation of university academic policies.
