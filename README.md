@@ -79,10 +79,6 @@ edupolicy-agent/
    uvicorn app.main:app --reload
    ```
 
-   On first start the agent ingests `data/regulations.pdf` into Milvus when the
-   file is present. If the PDF is missing, ingestion is skipped until you add a
-   document and restart the service.
-
 5. **Launch the Streamlit UI (optional)**
 
    ```bash
