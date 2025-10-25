@@ -2,7 +2,7 @@
 
 Due to difficulties in finding out and search for suitable regulations attachments when problem arise, I find this is a very complex due to the disorder and organize of how these documents are stored, therefore I create this agent, to help me search for relevent infomation with some simple prompt, no need to look hopelessly for hours just to find some very short answer.
 
-## ✨ Features
+## Features
 
 - **ReAct Agent Orchestration** – multi-tool reasoning loop powered by
   LangChain and OpenRouter LLMs.
