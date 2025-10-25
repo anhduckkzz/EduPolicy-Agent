@@ -19,7 +19,7 @@ Due to difficulties in finding out and search for suitable regulations attachmen
 - **Dockerised Deployment** – Dockerfile + docker-compose for reproducible
   setup including Milvus standalone.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 edupolicy-agent/
@@ -45,7 +45,7 @@ edupolicy-agent/
 └── README.md
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 1. **Clone repository & install dependencies**
 
@@ -87,7 +87,7 @@ edupolicy-agent/
 
    The UI communicates with the FastAPI backend at `http://localhost:8000`.
 
-## 🧠 Agent Behaviour
+## Agent Behaviour
 
 - The **system prompt** enforces tool-aware behaviour, instructing the model to
   reason in Vietnamese and clearly state when tools are used.
@@ -124,7 +124,7 @@ edupolicy-agent/
   the backend remains operational.
 - Fine-tune chunking or retrieval depth via `config.py`.
 
-## 🌐 Docker Deployment
+## Docker Deployment
 
 A production ready stack can be launched with:
 
@@ -151,7 +151,7 @@ using volumes if required.
 - `POST /web/query` – execute Tavily search.
 - `GET /health` – health probe.
 
-## 🧪 Testing the Agent
+## Testing the Agent
 
 Example question flow once the backend is running:
 
@@ -163,14 +163,3 @@ curl -X POST http://localhost:8000/chat \
 
 The agent will fetch relevant regulation snippets, optionally summarise and
 respond. Inspect the reasoning trace to verify tool usage.
-
-## 🔧 Development Notes
-
-- Milvus operations require the server to be reachable at `settings.milvus_uri`.
-  When running locally ensure the Docker container is healthy.
-- OpenRouter requires the `HTTP-Referer` and `X-Title` headers; these are set in
-  the LangChain client by default.
-- The RAG ingestion uses e5-large-v2 embeddings (dimension 1024). Ensure the
-  Milvus collection uses matching dimensionality.
-- Tavily integration is optional; without a key the tool returns a descriptive
-  message, allowing the agent to avoid failing requests.
