@@ -16,17 +16,23 @@ class RAGTool:
     """Encapsulates RAG ingestion and retrieval logic."""
 
     def __init__(self) -> None:
+        self.vector_store: MilvusVectorStore | None = None
         try:
             self.vector_store = MilvusVectorStore()
-        except Exception as exc:  # pragma: no cover - startup guard
-            LOGGER.exception("Unable to initialise Milvus vector store")
-            raise
+        except Exception:  # pragma: no cover - startup guard
+            LOGGER.exception(
+                "Unable to initialise Milvus vector store; RAG tool will run in degraded mode."
+            )
+            return
         if self.vector_store.is_empty:
             LOGGER.info("Milvus collection empty; starting ingestion pipeline")
             self._ingest_corpus()
 
     # ------------------------------------------------------------------
     def _ingest_corpus(self) -> None:
+        if not self.vector_store:
+            LOGGER.warning("Skipping ingestion because no vector store is available.")
+            return
         pdf_path = settings.data_dir / "regulations.pdf"
         if not pdf_path.exists():
             LOGGER.warning("Regulations PDF not found at %s. Skipping ingestion.", pdf_path)
@@ -48,11 +54,16 @@ class RAGTool:
     def query_rag(self, query: str, *, top_k: int | None = None) -> Tuple[str, List[str]]:
         """Perform semantic search and return concatenated context."""
 
+        if not self.vector_store:
+            return (
+                "Chuc nang RAG tam thoi khong kha dung vi khong ket noi duoc toi Milvus.",
+                [],
+            )
         top_k = top_k or settings.top_k
         embedding = embed_texts([query])[0]
         documents = self.vector_store.query(embedding, top_k=top_k)
         if not documents:
-            return "Không tìm thấy thông tin phù hợp trong cơ sở quy định.", []
+            return "Khong tim thay thong tin phu hop trong co so quy dinh.", []
         snippets = [doc.text for doc in documents]
         combined = "\n\n".join(snippets)
         return combined, snippets

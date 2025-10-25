@@ -9,5 +9,5 @@ __pycache__/
 /data/session_memory.json
 /data/embeddings/*.bin
 /data/embeddings/*.json
-/data/regulations.pdf
+.pdf
 /data/student_records.db

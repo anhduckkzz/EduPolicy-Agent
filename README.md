@@ -51,7 +51,7 @@ edupolicy-agent/
 
    ```bash
    python -m venv .venv
-   source .venv/bin/activate
+   .venv\Scripts\Activate.ps1 (Command Prompt) or source .venv/bin/activate (Bash)
    pip install --upgrade pip
    pip install -r requirements.txt
    ```
