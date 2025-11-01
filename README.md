@@ -33,12 +33,12 @@ edupolicy-agent/
 │   │   └── tools/             # Tool implementations
 │   └── db/                    # Milvus & SQLite clients
 ├── data/
-│   ├── regulations.pdf        # Provide your own regulation PDF (git-ignored)
-│   ├── student_records.db     # Provide your own SQLite DB (git-ignored)
+│   ├── all_regulations_files.pdf        # 
+│   ├── student_records.db     
 │   └── embeddings/            # Placeholder for exported vectors
 ├── ui/
-│   ├── app_ui.py              # Streamlit chat UI
-│   └── openwebui_config.json  # Front-end configuration
+│   ├── app_ui.py              # Streamlit UI
+│   └── openwebui_config.json  # Configuration
 ├── requirements.txt
 ├── Dockerfile
 ├── docker-compose.yml
