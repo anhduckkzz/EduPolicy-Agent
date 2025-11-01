@@ -97,7 +97,7 @@ edupolicy-agent/
 
 ## 📄 Data & Customisation
 
-- Place an institution-specific PDF at `data/regulations.pdf`. The repository
+- Place an institution-specific related-to-law PDF at `data/` folder. The repository
   does not ship a sample for licensing reasons. The ingestion pipeline runs
   automatically on boot when the Milvus collection is empty and the file is
   available.
