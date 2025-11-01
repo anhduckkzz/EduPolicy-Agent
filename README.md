@@ -87,6 +87,10 @@ edupolicy-agent/
 
    The UI communicates with the FastAPI backend at `http://localhost:8000`.
 
+## Embedding
+All the pdf files will be embedded before put into Milvus database, BAAI/bge-m3 embedding model is chosen because of its ability in embedding multilingual, therefore it very suitable to use with Vietnamese.
+The `data/Embedding.ipynb` notebook shows how to embed your PDFs into Milvus Lite using the `BAAI/bge-m3` model.
+
 ## Agent Behaviour
 
 - The **system prompt** enforces tool-aware behaviour, instructing the model to
@@ -95,7 +99,7 @@ edupolicy-agent/
 - Conversation history is persisted as JSON (`data/session_memory.json`) keyed by
   `session_id` allowing stateless API deployments with lightweight persistence.
 
-## 📄 Data & Customisation
+## Data & Customisation
 
 - Place an institution-specific related-to-law PDF at `data/` folder. The repository
   does not ship a sample for licensing reasons. The ingestion pipeline runs
@@ -120,7 +124,7 @@ Services started:
 Provide environment variables via `.env` for secrets. Mount real PDFs/databases
 using volumes if required.
 
-## ✅ API Reference
+## API Reference
 
 - `POST /chat` – body `{"session_id": "...", "message": "..."}`. Returns
   agent answer, reasoning and tool logs.
