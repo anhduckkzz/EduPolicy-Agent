@@ -101,27 +101,6 @@ edupolicy-agent/
   does not ship a sample for licensing reasons. The ingestion pipeline runs
   automatically on boot when the Milvus collection is empty and the file is
   available.
-- Provision `data/student_records.db` with your academic dataset. A minimal
-  starter schema can be created with:
-
-  ```bash
-  sqlite3 data/student_records.db <<'SQL'
-  CREATE TABLE IF NOT EXISTS students (
-      id INTEGER PRIMARY KEY,
-      name TEXT NOT NULL,
-      gpa REAL NOT NULL,
-      status TEXT,
-      warnings INTEGER DEFAULT 0,
-      year INTEGER
-  );
-  INSERT INTO students (name, gpa, status, warnings, year) VALUES
-      ('Nguyen Van A', 3.2, 'Good Standing', 0, 2023),
-      ('Tran Thi B', 2.1, 'Probation', 2, 2023);
-  SQL
-  ```
-
-  When the file is absent the SQL tool responds with a descriptive message so
-  the backend remains operational.
 - Fine-tune chunking or retrieval depth via `config.py`.
 
 ## Docker Deployment
